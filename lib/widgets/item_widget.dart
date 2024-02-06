@@ -9,31 +9,37 @@ class ItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
       height: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            height: 150,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: ExactAssetImage(myItem.itemImage), fit: BoxFit.fill),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.network(
+              myItem.itemImage,
+              width: double.infinity,
+              height: 200,
+              fit: BoxFit.fill,
             ),
-            child: const Text(''),
           ),
-          Text(
-            myItem.itemTitle,
-            style: TextStyle(
-              fontSize: 30,
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              myItem.itemTitle,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 25,
+              ),
+              textAlign: TextAlign.left,
             ),
-            textAlign: TextAlign.left,
           ),
           Text(
             myItem.itemSubTitle!,
-            style: TextStyle(fontSize: 10),
-            textAlign: TextAlign.left,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontSize: 15, color: Colors.grey),
           ),
         ],
       ),

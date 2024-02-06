@@ -8,10 +8,12 @@ class HomeView extends StatelessWidget {
 
   final List<ItemModel> items = const [
     ItemModel(
-        itemImage: 'assets/technology.jpeg',
-        itemTitle: ' hbdikbciuudh ',
+        itemImage:
+            'https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-980x653.jpg',
+        itemTitle:
+            ' hbdikbciuudh  fiewufwef fewhfoiuwef uiehiuwef uehfoeh ifhweuiofhe ',
         itemSubTitle:
-            'viweyfgbeuifhkeu fiewufwef fewhfoiuwef uiehiuwef uehfoeh ifhweuiofhew jehfiuwefh '),
+            'viweyfgbeuifhkeu fiewufwef fewhfoiuwef uiehiuwef uehfoeh ifhweuiofhew jehfiuwefh hoiwe jeiwofhoew oehd0wehf oifjwoeihfoiwe eiwhfirwohgoer fiowehfuhwiejf eifjie iofjwi0h iefhiwuerh iwhf '),
   ];
 
   final List<ItemModel> myHorzList = const [
@@ -49,10 +51,9 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            flex: 1,
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
             child: SizedBox(
               height: 100,
               child: ListView.builder(
@@ -63,16 +64,12 @@ class HomeView extends StatelessWidget {
                   }),
             ),
           ),
-          Expanded(
-            flex: 2,
-            child: SizedBox(
-              height: 100,
-              child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: items.length,
-                  itemBuilder: (context, indx) {
-                    return ItemWidget(myItem: items[indx]);
-                  }),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: items.length * 4,
+              (context, indx) {
+                return ItemWidget(myItem: items[0]);
+              },
             ),
           ),
         ],

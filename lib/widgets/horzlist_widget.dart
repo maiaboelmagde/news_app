@@ -8,7 +8,7 @@ class HorzListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       alignment: Alignment.center,
       height: 100,
       width: 180,
