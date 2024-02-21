@@ -34,8 +34,13 @@ class _vertListBuilderState extends State<vertListBuilder> {
     return isLoading
         ? const SliverFillRemaining(
             child: Center(child: CircularProgressIndicator()))
-        : vertList(
-            items: items,
-          );
+        : items.isNotEmpty
+            ? vertList(
+                items: items,
+              )
+            : SliverFillRemaining(
+                child: Center(
+                child: Text('Oops! theres something wrong'),
+              ));
   }
 }
