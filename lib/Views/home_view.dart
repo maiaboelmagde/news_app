@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/Views/vert_list_builder.dart';
 import 'package:news_app/widgets/horz_list.dart';
-import 'package:news_app/widgets/vert_list.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
           SliverToBoxAdapter(
             child: HorzList(),
           ),
-          vertList(),
+          vertListBuilder(),
         ],
       ),
     );
