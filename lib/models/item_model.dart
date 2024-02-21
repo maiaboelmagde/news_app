@@ -1,5 +1,5 @@
 class ItemModel {
-  final String itemImage;
+  final String? itemImage;
   final String itemTitle;
   final String? itemSubTitle;
 

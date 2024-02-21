@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/models/item_model.dart';
 
-class HorzListWidget extends StatelessWidget {
-  const HorzListWidget({super.key, required this.myList});
+class HorzWidget extends StatelessWidget {
+  const HorzWidget({super.key, required this.myList});
 
   final ItemModel myList;
   @override
@@ -15,7 +15,7 @@ class HorzListWidget extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           image: DecorationImage(
-            image: ExactAssetImage(myList.itemImage),
+            image: ExactAssetImage(myList.itemImage ?? 'assets/business.avif'),
             fit: BoxFit.fill,
           )),
       child: Text(

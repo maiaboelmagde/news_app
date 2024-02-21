@@ -17,7 +17,7 @@ class ItemWidget extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-              myItem.itemImage,
+              myItem.itemImage ?? 'assets/business.avif',
               width: double.infinity,
               height: 200,
               fit: BoxFit.fill,
@@ -36,7 +36,7 @@ class ItemWidget extends StatelessWidget {
             ),
           ),
           Text(
-            myItem.itemSubTitle!,
+            myItem.itemSubTitle ?? '',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontSize: 15, color: Colors.grey),
