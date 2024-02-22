@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/models/item_model.dart';
+
 import 'package:news_app/services/get_api_news.dart';
 import 'package:news_app/widgets/vert_list.dart';
 
@@ -14,33 +15,31 @@ class vertListBuilder extends StatefulWidget {
 }
 
 class _vertListBuilderState extends State<vertListBuilder> {
-  List<ItemModel> items = [];
-  bool isLoading = true;
-
-  Future<void> getItems() async {
-    items = await GetApiNewsService(dio: Dio()).getNews();
-    isLoading = false;
-    setState(() {});
-  }
-
+  var futureData;
   @override
   void initState() {
-    getItems();
     super.initState();
+    futureData = GetApiNewsService(dio: Dio()).getNews();
   }
 
-  @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const SliverFillRemaining(
-            child: Center(child: CircularProgressIndicator()))
-        : items.isNotEmpty
-            ? vertList(
-                items: items,
-              )
-            : SliverFillRemaining(
-                child: Center(
-                child: Text('Oops! theres something wrong'),
-              ));
+    return FutureBuilder<List<ItemModel>>(
+      future: futureData,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return vertList(items: snapshot.data!);
+        } else if (snapshot.hasError) {
+          return const SliverFillRemaining(
+            child: Center(
+              child: Text('Oops! theres something went wrong ...'),
+            ),
+          );
+        } else {
+          return const SliverFillRemaining(
+            child: Center(child: CircularProgressIndicator()),
+          );
+        }
+      },
+    );
   }
 }

@@ -17,7 +17,8 @@ class ItemWidget extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-              myItem.itemImage ?? 'assets/business.avif',
+              myItem.itemImage ??
+                  'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png',
               width: double.infinity,
               height: 200,
               fit: BoxFit.fill,
