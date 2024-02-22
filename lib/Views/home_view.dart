@@ -3,8 +3,8 @@ import 'package:news_app/widgets/horz_list.dart';
 import 'package:news_app/widgets/vert_list_builder.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
+  const HomeView({super.key, this.category = 'general'});
+  final String category;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,12 +30,12 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
-      body: const CustomScrollView(
+      body: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: HorzList(),
           ),
-          vertListBuilder(),
+          vertListBuilder(myCategory: category),
         ],
       ),
     );

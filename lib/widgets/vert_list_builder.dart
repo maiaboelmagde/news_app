@@ -6,20 +6,21 @@ import 'package:news_app/services/get_api_news.dart';
 import 'package:news_app/widgets/vert_list.dart';
 
 class vertListBuilder extends StatefulWidget {
-  const vertListBuilder({
-    super.key,
-  });
-
+  const vertListBuilder({super.key, required this.myCategory});
+  final String myCategory;
   @override
-  State<vertListBuilder> createState() => _vertListBuilderState();
+  State<vertListBuilder> createState() =>
+      _vertListBuilderState(myCategory: myCategory);
 }
 
 class _vertListBuilderState extends State<vertListBuilder> {
+  _vertListBuilderState({required this.myCategory});
+  String myCategory;
   var futureData;
   @override
   void initState() {
     super.initState();
-    futureData = GetApiNewsService(dio: Dio()).getNews();
+    futureData = GetApiNewsService(dio: Dio(), category: myCategory).getNews();
   }
 
   Widget build(BuildContext context) {
