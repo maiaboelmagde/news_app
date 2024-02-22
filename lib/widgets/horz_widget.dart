@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/Views/home_view.dart';
+import 'package:news_app/Views/category_view.dart';
 import 'package:news_app/models/item_model.dart';
 
 class HorzWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class HorzWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return HomeView(category: myList.itemTitle);
+          return CategoryView(category: myList.itemTitle);
         }));
       },
       child: Container(
