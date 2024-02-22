@@ -16,11 +16,7 @@ class GetApiNewsService {
       List<ItemModel> articleList = [];
 
       for (var item in articles) {
-        ItemModel newItem = ItemModel(
-          itemImage: item['urlToImage'],
-          itemTitle: item['title'],
-          itemSubTitle: item['description'],
-        );
+        ItemModel newItem = ItemModel.fromJson(item);
 
         articleList.add(newItem);
       }
